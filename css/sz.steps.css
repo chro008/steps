@@ -196,6 +196,28 @@
     color: #2d8cf0;
 }
 
+.sz-steps-item.sz-steps-status-error .sz-steps-head-inner:before {
+    content: '';
+    background: url('../image/sz-step-icon-error.png') no-repeat;
+    background-color: white;
+    width:15px;
+    height: 15px;
+    left:5px;
+    top:5px;
+    position: absolute;
+}
+
+.sz-steps-item.sz-steps-status-finish .sz-steps-head-inner:before {
+    content: '';
+    background: url('../image/sz-step-icon-finish.png') no-repeat;
+    background-color: white;
+    width:15px;
+    height: 15px;
+    left:5px;
+    top:5px;
+    position: absolute;
+}
+
 .sz-steps .sz-steps-title {
     display: inline-block;
     margin-bottom: 4px;
