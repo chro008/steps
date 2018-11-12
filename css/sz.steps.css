@@ -153,6 +153,7 @@
     border-radius: 50%;
     font-size: 14px;
     transition: background-color .2s ease-in-out;
+    position: relative;
 }
 
 .sz-steps-vertical .sz-steps-head-inner {
