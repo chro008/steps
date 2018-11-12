@@ -191,7 +191,7 @@
     color: #ed4014;
 }
 
-.sz-steps-itemszivu-steps-status-finish .sz-steps-head-inner span,
+.sz-steps-item.sz-steps-status-finish .sz-steps-head-inner span,
 .sz-steps-item.sz-steps-status-finish .sz-steps-head-inner>.sz-steps-icon {
     color: #2d8cf0;
 }
