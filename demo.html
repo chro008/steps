@@ -1,344 +1,83 @@
 <!DOCTYPE html>
 <html>
-        <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <title>demo</title>
-        </head>
-<style>
-
-.sz-steps, .sz-steps *,
-.sz-steps *:before,
-.sz-steps *:after {
-	box-sizing: border-box;
-	margin:0;
-	padding:0;
-}
-
-.sz-steps {
-	font-size:0;
-}
-
-.sz-steps-item {
-	display: inline-block;
-    position: relative;
-    vertical-align: top;
-}
-
-.sz-steps-vertical .sz-steps-item {
-    display: block;
-}
-
-.sz-steps-item:last-child .sz-steps-tail {
-    display: none;
-}
-
-.sz-steps .sz-steps-tail {
-    width: 100%;
-    padding: 0 10px;
-    position: absolute;
-    left: 0;
-    top: 13px;
-}
-
-.sz-steps-vertical .sz-steps-tail {
-    position: absolute;
-    left: 13px;
-    top: 0;
-    height: 100%;
-    width: 1px;
-    padding: 30px 0 4px;
-}
-
-.sz-steps .sz-steps-tail>i {
-    display: inline-block;
-    width: 100%;
-    height: 1px;
-    vertical-align: top;
-    background: #e8eaec;
-    border-radius: 1px;
-    position: relative;
-}
-
-.sz-steps-item.sz-steps-status-process .sz-steps-tail>i {
-    background-color: #e8eaec;
-}
-.sz-steps-item.sz-steps-status-wait .sz-steps-tail>i {
-    background-color: #e8eaec;
-}
-.sz-steps-item.sz-steps-status-error .sz-steps-tail>i {
-    background-color: #e8eaec;
-}
-
-.sz-steps-vertical .sz-steps-tail>i {
-    height: 100%;
-    width: 1px;
-}
-
-.sz-steps .sz-steps-tail>i:after {
-    content: "";
-    width: 0;
-    height: 100%;
-    background: #e8eaec;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-}
-
-.sz-steps-vertical .sz-steps-tail>i:after {
-    height: 0;
-    width: 100%;
-}
-
-.sz-steps-vertical .sz-steps-status-finish .sz-steps-tail>i:after {
-    height: 100%;
-}
-.sz-steps-item.sz-steps-status-finish .sz-steps-tail>i:after {
-    width: 100%;
-    background: #2d8cf0;
-    transition: all .2s ease-in-out;
-    opacity: 1;
-}
-
-.sz-steps .sz-steps-head {
-    background: #fff;
-}
-
-.sz-steps-horizontal .sz-steps-item:not(:first-child) .sz-steps-head {
-    padding-left: 10px;
-    margin-left: -10px;
-}
-
-.sz-steps-vertical .sz-steps-head {
-    float: left;
-}
-
-.sz-steps .sz-steps-main {
-    margin-top: 2.5px;
-    display: inline;
-}
-
-.sz-steps .sz-steps-head, 
-.sz-steps .sz-steps-main {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.sz-steps-vertical .sz-steps-main {
-    min-height: 100px;
-    overflow: hidden;
-    display: block;
-}
-
-.sz-steps .sz-steps-head-inner {
-    display: block;
-    width: 26px;
-    height: 26px;
-    line-height: 24px;
-    margin-right: 8px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    font-size: 14px;
-    transition: background-color .2s ease-in-out;
-}
-
-.sz-steps-vertical .sz-steps-head-inner {
-    margin-right: 16px;
-}
-
-.sz-steps-item.sz-steps-status-process .sz-steps-head-inner {
-    border-color: #2d8cf0;
-    background-color: #2d8cf0;
-}
-.sz-steps-item.sz-steps-status-wait .sz-steps-head-inner {
-    background-color: #fff;
-}
-.sz-steps-item.sz-steps-status-finish .sz-steps-head-inner {
-    background-color: #fff;
-    border-color: #2d8cf0;
-}
-
-.sz-steps-item.sz-steps-status-error .sz-steps-head-inner {
-    background-color: #fff;
-    border-color: #ed4014;
-}
-
-.sz-steps-item.sz-steps-status-process .sz-steps-head-inner>.sz-steps-icon,
-.sz-steps-item.sz-steps-status-process .sz-steps-head-inner span {
-    color: #fff;
-}
-
-.sz-steps-item.sz-steps-status-wait .sz-steps-head-inner>.sz-steps-icon,
-.sz-steps-item.sz-steps-status-wait .sz-steps-head-inner span {
-    color: #ccc;
-}
-
-.sz-steps-item.sz-steps-status-error .sz-steps-head-inner>.sz-steps-icon,
-.sz-steps-item.sz-steps-status-error .sz-steps-head-inner span {
-    color: #ed4014;
-}
-
-.sz-steps-itemszivu-steps-status-finish .sz-steps-head-inner span,
-.sz-steps-item.sz-steps-status-finish .sz-steps-head-inner>.sz-steps-icon {
-    color: #2d8cf0;
-}
-
-.sz-steps .sz-steps-title {
-    display: inline-block;
-    margin-bottom: 4px;
-    padding-right: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #666;
-    background: #fff;
-}
-
-.sz-steps .sz-steps-content {
-    font-size: 12px;
-    color: #999;
-}
-
-.sz-steps-vertical .sz-steps-main .sz-steps-title {
-    line-height: 26px;
-}
-
-.sz-steps-vertical .sz-steps-main .sz-steps-content {
-    padding-bottom: 12px;
-    padding-left: 0;
-}
-
-.sz-steps-item.sz-steps-status-finish .sz-steps-content, 
-.sz-steps-item.sz-steps-status-finish .sz-steps-title {
-    color: #999;
-}
-
-.sz-steps-item.sz-steps-status-process .sz-steps-content,
-.sz-steps-item.sz-steps-status-process .sz-steps-title {
-    color: #666;
-}
-
-.sz-steps-item.sz-steps-status-wait .sz-steps-content,
-.sz-steps-item.sz-steps-status-wait .sz-steps-title {
-    color: #999;
-}
-
-.sz-steps-item.sz-steps-status-error .sz-steps-content,
-.sz-steps-item.sz-steps-status-error .sz-steps-title {
-    color: #ed4014;
-}
-
-</style>
-
-
-<script>
-	window.onload = function(){
-		var state = ["vertical", "horizontal"];
-		var index = 0;
-		var btnObj = document.querySelector("#btn");
-		var stepsContainer = document.querySelector(".sz-steps");
-		
-		btnObj.onclick = function(){
-			index++;
-			btnObj.value = "change to " + state[index%2];
-			removeClass(stepsContainer, "sz-steps-" + state[index%2]);
-			addClass(stepsContainer, "sz-steps-" + state[(index+1)%2]);
-		};
-	}
-	
-	function hasClass(elem, cls) {
-	  cls = cls || '';
-	  if (cls.replace(/\s/g, '').length == 0) return false; //当cls没有参数时，返回false
-	  return new RegExp(' ' + cls + ' ').test(' ' + elem.className + ' ');
-	}
-	
-	function addClass(ele, cls) {
-	  if (!hasClass(ele, cls)) {
-		ele.className = ele.className == '' ? cls : ele.className + ' ' + cls;
-	  }
-	}
-	 
-	function removeClass(elem, cls) {
-	  if (hasClass(elem, cls)) {
-		var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, '') + ' ';
-		while (newClass.indexOf(' ' + cls + ' ') >= 0) {
-		  newClass = newClass.replace(' ' + cls + ' ', ' ');
-		}
-		elem.className = newClass.replace(/^\s+|\s+$/g, '');
-	  }
-	}
-
-</script>
-<body>
-	<div style="height:30px;">
-	   <iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="../common_head.html" width="100%"  height="100%;">
-	  </iframe>
-	</div>
-<div style="margin: 100px">
-	<input type="button" value="change to vertical" id="btn" style="margin:20px 0;"/>
-	<div class="sz-steps sz-steps-horizontal">
-		<div class="sz-steps-item sz-steps-status-process">
-			<div class="sz-steps-tail">
-				<i></i>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>demo</title>
+		<script src="js/sz.steps.js"></script>
+		<link rel="StyleSheet" href="css/sz.steps.css" type="text/css">
+	</head>
+	<body>
+		<div style="height:30px;">
+		   <iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="../common_head.html" width="100%"  height="100%;">
+		  </iframe>
+		</div>
+		<div style="margin: 100px">
+			<div name="config-container" style="margin:20px 0;">
+				<input type="button" value="change to vertical" id="direction-btn"/>
+				<input type="button" value="change to short" id="length-btn"/>
 			</div>
-			<div class="sz-steps-head">
-				<div class="sz-steps-head-inner">
-					<span>1</span>
+			
+			<div class="sz-steps sz-steps-horizontal sz-steps-length-normal">
+				<div class="sz-steps-item sz-steps-status-process">
+					<div class="sz-steps-tail">
+						<i></i>
+					</div>
+					<div class="sz-steps-head">
+						<div class="sz-steps-head-inner">
+							<span>1</span>
+						</div>
+					</div>
+					<div class="sz-steps-main">
+						<div class="sz-steps-title">进行中</div>
+						<div class="sz-steps-content">这里是该步骤的描述信息</div>
+					</div>
+				</div>
+				
+				<div class="sz-steps-item sz-steps-status-wait">
+					<div class="sz-steps-tail">
+						<i></i>
+					</div> 
+					<div class="sz-steps-head">
+						<div class="sz-steps-head-inner">
+							<span>2</span>
+						</div>
+					</div> 
+					<div class="sz-steps-main">
+						<div class="sz-steps-title">待进行</div> 
+						<div class="sz-steps-content">这里是该步骤的描述信息</div>
+					</div>
+				</div>
+				
+				<div class="sz-steps-item sz-steps-status-finish">
+					<div class="sz-steps-tail">
+						<i></i>
+					</div> 
+					<div class="sz-steps-head">
+						<div class="sz-steps-head-inner">
+							<span class="sz-steps-icon sz-icon sz-icon-ios-checkmark">3</span>
+						</div>
+					</div> 
+					<div class="sz-steps-main">
+						<div class="sz-steps-title">已完成</div> 
+						<div class="sz-steps-content">这里是该步骤的描述信息</div>
+					</div>
+				</div>
+				
+				<div class="sz-steps-item sz-steps-status-error">
+					<div class="sz-steps-tail">
+						<i></i>
+					</div> 
+					<div class="sz-steps-head">
+						<div class="sz-steps-head-inner">
+							<span class="sz-steps-icon sz-icon sz-icon-ios-close">4</span>
+						</div>
+					</div> 
+					<div class="sz-steps-main">
+						<div class="sz-steps-title">有错误</div> 
+						<div class="sz-steps-content">这里是该步骤的描述信息</div>
+					</div>
 				</div>
 			</div>
-			<div class="sz-steps-main">
-				<div class="sz-steps-title">进行中</div>
-				<div class="sz-steps-content">这里是该步骤的描述信息</div>
-			</div>
 		</div>
-		
-		<div class="sz-steps-item sz-steps-status-wait">
-			<div class="sz-steps-tail">
-				<i></i>
-			</div> 
-			<div class="sz-steps-head">
-				<div class="sz-steps-head-inner">
-					<span>2</span>
-				</div>
-			</div> 
-			<div class="sz-steps-main">
-				<div class="sz-steps-title">待进行</div> 
-				<div class="sz-steps-content">这里是该步骤的描述信息</div>
-			</div>
-		</div>
-		
-		<div class="sz-steps-item sz-steps-status-finish">
-			<div class="sz-steps-tail">
-				<i></i>
-			</div> 
-			<div class="sz-steps-head">
-				<div class="sz-steps-head-inner">
-					<span class="sz-steps-icon sz-icon sz-icon-ios-checkmark">3</span>
-				</div>
-			</div> 
-			<div class="sz-steps-main">
-				<div class="sz-steps-title">已完成</div> 
-				<div class="sz-steps-content">这里是该步骤的描述信息</div>
-			</div>
-		</div>
-		
-		<div class="sz-steps-item sz-steps-status-error">
-			<div class="sz-steps-tail">
-				<i></i>
-			</div> 
-			<div class="sz-steps-head">
-				<div class="sz-steps-head-inner">
-					<span class="sz-steps-icon sz-icon sz-icon-ios-close">4</span>
-				</div>
-			</div> 
-			<div class="sz-steps-main">
-				<div class="sz-steps-title">有错误</div> 
-				<div class="sz-steps-content">这里是该步骤的描述信息</div>
-			</div>
-		</div>
-	</div>
-
-</div>
-
-</body>
+	</body>
 </html>
