@@ -1,17 +1,17 @@
 .sz-steps, .sz-steps *,
 .sz-steps *:before,
 .sz-steps *:after {
-	box-sizing: border-box;
-	margin:0;
-	padding:0;
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
 }
 
 .sz-steps {
-	font-size:0;
+    font-size:0;
 }
 
 .sz-steps-item {
-	display: inline-block;
+    display: inline-block;
     position: relative;
     vertical-align: top;
 }
@@ -109,7 +109,7 @@
     display: inline;
 }
 
-.sz-steps .sz-steps-head, 
+.sz-steps .sz-steps-head,
 .sz-steps .sz-steps-main {
     position: relative;
     display: inline-block;
@@ -131,7 +131,7 @@
 }
 
 .sz-steps-horizontal .sz-steps-main {
-	width:150px;
+    width:150px;
 }
 
 .sz-steps-horizontal.sz-steps-length-long .sz-steps-main {
@@ -203,8 +203,8 @@
     background-color: white;
     width:15px;
     height: 15px;
-    left:5px;
-    top:5px;
+    left:4px;
+    top:4px;
     position: absolute;
 }
 
@@ -218,6 +218,7 @@
     top:5px;
     position: absolute;
 }
+
 
 .sz-steps .sz-steps-title {
     display: inline-block;
@@ -243,7 +244,7 @@
     padding-left: 0;
 }
 
-.sz-steps-item.sz-steps-status-finish .sz-steps-content, 
+.sz-steps-item.sz-steps-status-finish .sz-steps-content,
 .sz-steps-item.sz-steps-status-finish .sz-steps-title {
     color: #999;
 }

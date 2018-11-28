@@ -3,6 +3,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>demo</title>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+		<script src="js/load.js"></script>
 		<script src="js/sz.steps.js"></script>
 		<link rel="StyleSheet" href="css/sz.steps.css" type="text/css">
 	</head>
@@ -79,5 +81,34 @@
 				</div>
 			</div>
 		</div>
+		<div style="margin:100px">
+			
+			<button onClick="before()" > 上一步</button>
+			<button onClick="next()" > 下一步</button>
+			<button onClick="nextError()" > 下一步,当前步骤错误</button>
+			<div id="container"></div>
+		
+		</div>
 	</body>
+	
+	<script>
+		var steps = $("#container").initSteps({
+            stepDetailDescription: ["设置基本信息", "设置活动条件", "设置活动内容"],
+            connectorSize: "long",
+            current: 0
+        });
+		
+		function before(){
+			steps.pre();
+		}
+		
+		function next(){
+			steps.next();
+		}
+		
+		function nextError(){
+			steps.makeError();
+		}
+	
+	</script>
 </html>
